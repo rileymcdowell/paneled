@@ -1,0 +1,39 @@
+services:
+  redis:
+    image: redis:7.0.2-alpine3.16
+    volumes:
+      - "./redis-data:/data"
+
+  backend-web:
+    build: 
+      context: "./backend"
+    init: true
+    image: "riley.mcdowell/panel_dashboard_backend:latest"
+    volumes:
+      - "./backend/panel_dashboard:/app/panel_dashboard"
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      FLASK_DEBUG: "1"
+      PANEL_IPS: "192.168.1.192,192.168.1.194,192.168.1.180"
+      REDIS_URL: "redis://redis:6379"
+    ports:
+      - "5000:5000"
+    entrypoint: ["flask"] 
+    command: ["run", "--host=0.0.0.0"]
+
+  backend-worker:
+    build: 
+      context: "./backend"
+    image: "riley.mcdowell/panel_dashboard_backend:latest"
+    volumes:
+      - "./backend/panel_dashboard:/app/panel_dashboard"
+    init: true
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      FLASK_DEBUG: "1"
+      PANEL_IPS: "192.168.1.192,192.168.1.194,192.168.1.180"
+      REDIS_URL: "redis://redis:6379"
+    entrypoint: ["celery"]
+    command: ["-A", "panel_dashboard.celery_app", "worker", "--beat", "--concurrency=1", "--loglevel=INFO"]
+      
+    
