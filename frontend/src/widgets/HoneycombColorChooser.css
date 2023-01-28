@@ -1,0 +1,23 @@
+.honeycomb-color-chooser {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+  
+  .honeycomb-color-image {
+    width: 234px
+  }
+  
+  #view, #viewC {
+    color: black;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+  }
+  
+  .right {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }

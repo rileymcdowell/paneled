@@ -2,3 +2,6 @@ redis-data
 .vscode/launch.json
 .vscode/c_cpp_properties.json
 calibration
+*.pyc
+*.pyo
+**__pycache__**

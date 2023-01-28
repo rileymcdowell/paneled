@@ -1,0 +1,59 @@
+
+/* Disabled for a while
+.swatch { 
+  height: 1em;
+  width: 1em;
+  border: 1px solid black;
+  background-color: rgb;
+}
+*/
+
+/* Use flex layout for the cards that show the panels as items
+   so we can get creative with the layout */
+.panel-item .card-body {
+  display: flex;
+}
+
+/* Left-align the panel identity info for readability within the block. */
+.panel-ident-block {
+  justify-items: left;
+}
+
+/* Expand the settings buttons to be cendered and on the right of their container */
+.group-settings-btn, .panel-settings-btn {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+}
+
+/* Remove the default accordion collapse button */
+#group-list-accordion .accordion-button::after {
+  display: none;
+}
+
+/* Style the replacement accordion button for easier visibility */
+#group-list-accordion .accordion-collapse-btn {
+  margin-left: 1em;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* Flip the orientation of the replacement accordion button when collapsed */
+#group-list-accordion .accordion-collapse-btn.collapsed {
+  transform: rotate(180deg);
+}
+
+/* Space out items in the modal forms */
+.settings-modal form div {
+  margin-bottom: 1em;
+}
+
+/* If there are two inputs consecutively, space them out vertically */
+.settings-modal input + input {
+  margin-top: 1em;
+}
+
+/* Space out cards within panel groups, but not the last card in the group */
+#group-list-accordion .accordion-item .list-group-item:not(:last-child) {
+  margin-bottom: 1em;
+}
