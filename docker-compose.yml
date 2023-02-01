@@ -2,7 +2,7 @@ services:
   redis:
     image: redis:7.0.2-alpine3.16
     volumes:
-      - "./redis-data:/data"
+      - "./.data/redis:/data"
 
   backend-web:
     build: 
