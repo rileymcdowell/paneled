@@ -42,7 +42,18 @@ PETG box, and I found only a subset of those settings was required to get a good
 ---
 ## Tapping Threads
 
-TODO: Photograph and describe this.
+The holes in the box are sized to have threads tapped into them. Due to the depth of the box, it is highly 
+recommended to use a small "T" handle tap wrench as shown. I found my double-end adjustable style
+hit the walls of the box as I tapped the threads, so I needed to switch to the "T" handle style.
+
+The 7 outer holes of the box are sized to be tapped to M3.5 size. 
+
+<img src="images/outer_m3.5_holes.jpg" alt="Location of M3.5 holes to tap" width="500"/>
+
+The 4 inner holes of the box are sized to be tapped to the slighly smaller M3 size. This
+seems to be a common size for PCB mount holes.
+
+<img src="images/inner_m3_holes.jpg" alt="Location of M3 holes to tap" width="500"/>
 
 ---
 

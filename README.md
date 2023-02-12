@@ -9,8 +9,6 @@ of like-colored panels, and over-wifi firmware updates.
 ### Instructions
 ---
 
-Detailed build instructions are available. 
-
 1. [Bill of Materials](/instructions/00_bill_of_materials/README.md)
 1. [Circuit Board](/instructions/10_circuit_board/README.md)
 1. [Electronics Enclosure](/instructions/20_electronics_enclosure/README.md)
