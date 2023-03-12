@@ -25,7 +25,7 @@ the panels.
 | Front Fabric | $26.99 | Precut Piece | 1 | $26.99 | Amazon | 100 x 146cm | [Link](https://www.amazon.com/gp/product/B09LXLGHHF) |
 | Corks | $8.79 | 30 Corks | 15 | $0.59 | Amazon | #8 Straight 7/8" x 1 3/4" | [Link](https://www.amazon.com/gp/product/B0B4ZXD5L3) |
 | PLA Filament | $24.99 | 1KG Spool | 15 | $1.64 | Amazon | Hatchbox True Black PLA | [Link](https://www.amazon.com/gp/product/B00J0ECR5I) |
-| **Construction Materials Total** | | | 1 | $54.26 | | Single panel cost | |
+| **Total** | | | 1 | $54.26 | | Single panel cost | |
 
 In summary, you're looking at about $60/panel if you don't include lights. You could cut that cost down significantly by choosing more thrifty fabric to wrap the front and sides. Whatever fabric you choose should be very breathable. You want air, and thus sound, to pass through the fabric and into the rockwool insulation inside.
 
@@ -49,7 +49,7 @@ In summary, you're looking at about $60/panel if you don't include lights. You c
 | 10k Ohm Resistor | $4.99 | 100 Pack | 20 | $0.25 | Amazon | 1/4W metal film; 1% Tolerance | [Link](https://www.amazon.com/gp/product/B08QRJZ82J) |
 | 100k Ohm Resistor | $4.99 | 100 Pack | 100 | $0.05 | Amazon | 1/4W metal film; 1% Tolerance | [Link](https://www.amazon.com/gp/product/B08QRSQB18) |
 | PETG Filament | $21.99 | 1kg Spool | 4 | $5.50 | Amazon | PETG has good temp stability | [Link](https://www.amazon.com/gp/product/B07PFS4J97) |
-| ** Electronics Materials Total** | | | 1 | $96.24 | | Single panel Cost | |
+| **Total** | | | 1 | $96.24 | | Single panel Cost | |
 
 In total, you're adding about $100/panel to include all the extras needed for lighting. 
 A few notes about these materials:
