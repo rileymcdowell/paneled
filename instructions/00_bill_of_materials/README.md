@@ -49,7 +49,8 @@ In summary, you're looking at about $60/panel if you don't include lights. You c
 | 10k Ohm Resistor | $4.99 | 100 Pack | 20 | $0.25 | Amazon | 1/4W metal film; 1% Tolerance | [Link](https://www.amazon.com/gp/product/B08QRJZ82J) |
 | 100k Ohm Resistor | $4.99 | 100 Pack | 100 | $0.05 | Amazon | 1/4W metal film; 1% Tolerance | [Link](https://www.amazon.com/gp/product/B08QRSQB18) |
 | PETG Filament | $21.99 | 1kg Spool | 4 | $5.50 | Amazon | PETG has good temp stability | [Link](https://www.amazon.com/gp/product/B07PFS4J97) |
-| **Total** | | | 1 | $96.24 | | Single panel Cost | |
+| Custom PCB | $2.50 | Each | 1 | $2.50 | JLCPCB | With ENIG finish | [Instructions](../10_circuit_board/README.md) |
+| **Total** | | | 1 | $98.74 | | Single panel Cost | |
 
 In total, you're adding about $100/panel to include all the extras needed for lighting. 
 A few notes about these materials:
