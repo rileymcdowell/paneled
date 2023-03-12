@@ -5,3 +5,4 @@ calibration
 *.pyc
 *.pyo
 **__pycache__**
+.data
