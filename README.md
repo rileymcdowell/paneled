@@ -12,7 +12,7 @@ of like-colored panels, and over-wifi firmware updates.
 1. [Bill of Materials](/instructions/00_bill_of_materials/README.md)
 1. [Circuit Board](/instructions/10_circuit_board/README.md)
 1. [Electronics Enclosure](/instructions/20_electronics_enclosure/README.md)
-1. [Panel Frame](/instructions/30_panel_frame/README.md)
+1. [Panel Assembly](/instructions/30_panel_assembly/README.md)
 1. [Hanging Hardware](/instructions/40_hanging_hardware/README.md)
 1. [Mount Options](/instructions/50_mount_options/README.md)
 
