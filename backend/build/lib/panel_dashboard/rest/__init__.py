@@ -1,1 +1,0 @@
-import panel_dashboard.rest.panels

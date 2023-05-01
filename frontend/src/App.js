@@ -4,7 +4,6 @@ import Navbar from './modules/navbar/Navbar';
 import { useDispatch } from 'react-redux';
 import { loadStateTree } from './state/reducer';
 import PanelGroupList from './modules/group_list/GroupList';
-import HoneycombColorChooser from './widgets/HoneycombColorChooser';
 import PanelSettingsModal from './modules/panel_settings/PanelSettingsModal';
 import GroupSettingsModal from './modules/panel_settings/GroupSettingsModal';
 
@@ -20,7 +19,6 @@ function App() {
       <div className="container-fluid">
         <Navbar/>
         <PanelGroupList/>
-        {/*<HoneycombColorChooser/>*/}
       </div>
     </div>
   );

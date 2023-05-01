@@ -1,7 +1,0 @@
-flask
-flask-cors
-celery[redis]
-redis
-#zeroconf
-#python-nmap
-requests

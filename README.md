@@ -6,7 +6,7 @@ collections of independent RGBW light strips over WiFi via a simple interface.
 Features include autodiscovery of new panels via UPnP, group administration 
 of like-colored panels, and over-wifi firmware updates.
 
-### Instructions
+### Construction Guide 
 ---
 
 1. [Bill of Materials](/instructions/00_bill_of_materials/README.md)
@@ -16,6 +16,25 @@ of like-colored panels, and over-wifi firmware updates.
 1. [Hanging Hardware](/instructions/40_hanging_hardware/README.md)
 1. [Mount Options](/instructions/50_mount_options/README.md)
 
+### Software Development Guide
+---
+
+Begin by installing docker and npm
+
+In one terminal, run the following commands to start up the backend.
+
+```bash
+./build.sh # Build the docker containers for this project
+./up.sh # Start the containers for this project
+```
+
+In another terminal, run the following commands to start up the frontend.
+
+```bash
+cd frontend
+npm install
+./start-frontend.sh
+```
 
 ### License
 ---
@@ -26,7 +45,7 @@ All source code is released under the GNU GPL V3.0 license. All remaining resour
 for those resources. 
 
 * GNU GPL V3.0 
-    * backend source code
+    * server source code
     * frontend source code
     * firmware source code
     * docker build and deployment utilities

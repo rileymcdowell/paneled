@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 function isDevlopmentMode() {
   return !process.env.NODE_ENV || process.env.NODE_ENV === "development";
 }
@@ -10,8 +8,8 @@ if (isDevlopmentMode()) {
   console.log("Detected production mode");
 }
 
-const _LOCAL_BACKEND = "http://localhost:5000"
-const _PRODUCTION_BACKEND = "/"
+const _LOCAL_BACKEND = "http://localhost:5000";
+const _PRODUCTION_BACKEND = window.location.origin; 
 
 function getBackendUrl() {
   if (isDevlopmentMode() ) {
