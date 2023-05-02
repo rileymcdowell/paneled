@@ -9,8 +9,8 @@ services:
       context: .
     init: true
     image: ${SERVER_IMG_NAME}:latest
-    #volumes:
-    #  - "./server/panel_dashboard:/app/panel_dashboard"
+    volumes:
+      - "./server/panel_dashboard:/app/panel_dashboard"
     environment:
       PYTHONDONTWRITEBYTECODE: "1"
       FLASK_DEBUG: "1"

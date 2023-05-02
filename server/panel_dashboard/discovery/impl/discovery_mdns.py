@@ -34,6 +34,7 @@ def discover_panels():
     zeroconf.close()
 
     matches = [x for x in listener.found if _PANEL_NAME_SUBSTRING in x.name]
+    _logger.debug(f"mDNS detected {len(matches)} matches in {_MDNS_WAIT_TIME_S} seconds")
 
     panel_ips = []
     for match in matches:
