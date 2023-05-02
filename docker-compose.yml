@@ -16,7 +16,7 @@ services:
       FLASK_DEBUG: "1"
       DISCOVERY_MODE: "ip_list"
       PANEL_IPS: "192.168.1.192,192.168.1.194,192.168.1.180"
-      REDIS_URL: "redis://redis:6379"
+      REDIS_HOST_PORT: "redis:6379"
     ports:
       - "5000:5000"
 
@@ -30,7 +30,7 @@ services:
       PYTHONDONTWRITEBYTECODE: "1"
       DISCOVERY_MODE: "ip_list"
       PANEL_IPS: "192.168.1.192,192.168.1.194,192.168.1.180"
-      REDIS_URL: "redis://redis:6379"
+      REDIS_HOST_PORT: "redis:6379"
     command: ["start_worker.sh"]
       
     

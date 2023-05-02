@@ -1,3 +1,4 @@
+import os
 import logging
 import json
 import redis as _redislib
@@ -6,19 +7,14 @@ import panel_dashboard.ops as ops
 _logger = logging.getLogger(__name__)
 
 from panel_dashboard.constants \
-    import DEFAULT_STATE_BACKEND_HOST \
-         , DEFAULT_STATE_BACKEND_PORT \
-         , DEFAULT_STATE_BACKEND_DB
+    import REDIS_STATE_BACKEND_URL
 
 _REDIS_CONN = None
 def _get_redis():
     global _REDIS_CONN
     if _REDIS_CONN is None:
         _REDIS_CONN = \
-            _redislib.Redis( host=DEFAULT_STATE_BACKEND_HOST
-                           , port=DEFAULT_STATE_BACKEND_PORT
-                           , db=DEFAULT_STATE_BACKEND_DB
-                           )
+            _redislib.from_url(REDIS_STATE_BACKEND_URL)
     return _REDIS_CONN
 
 """

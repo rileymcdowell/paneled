@@ -1,7 +1,10 @@
-# The state db gets Redis DB 0
-DEFAULT_STATE_BACKEND_HOST = "redis"
-DEFAULT_STATE_BACKEND_PORT = 6379
-DEFAULT_STATE_BACKEND_DB = 0
+import os
 
+
+# Convert the redis host and port to a base url.
+_REDIS_URL = f"redis://{os.environ.get('REDIS_HOST_PORT')}"
+
+# The state db gets Redis DB 0
+REDIS_STATE_BACKEND_URL = f"{_REDIS_URL}/0"
 # Celery message broker gets Redis DB 1
-DEFAULT_CELERY_BROKER_URL = "redis://redis:6379/1"
+REDIS_CELERY_BROKER_URL = f"{_REDIS_URL}/1"

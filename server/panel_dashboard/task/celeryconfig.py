@@ -1,11 +1,11 @@
 import os
-from panel_dashboard.constants import DEFAULT_CELERY_BROKER_URL
+from panel_dashboard.constants import REDIS_CELERY_BROKER_URL
 
-broker_url = os.environ.get("REDIS_URL", DEFAULT_CELERY_BROKER_URL)
+broker_url = REDIS_CELERY_BROKER_URL
 imports = ('panel_dashboard.task.periodic',)
 
 _SECOND = 1.0
-_DISCOVER_PANEL_QUERY_INTERVAL = 60 * _SECOND
+_DISCOVER_PANEL_QUERY_INTERVAL = 30 * _SECOND
 
 beat_schedule = { 
     'refresh_panel_list': {
