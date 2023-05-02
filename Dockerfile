@@ -39,3 +39,9 @@ ENV FLASK_APP=panel_dashboard.flask_app
 ENV PATH=/app:$PATH
 # Default to starting up the API server
 CMD start_server.sh
+
+# Add tini so the container responds accurately to signals
+ENV TINI_VERSION v0.19.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+ENTRYPOINT ["/tini", "--"]
