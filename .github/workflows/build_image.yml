@@ -1,5 +1,8 @@
 name: build-image-workflow
-on: [push]
+on: 
+  push:
+    branches:
+      - dev
 
 env:
   REGISTRY: ${{ github.actor }}
