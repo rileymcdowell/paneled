@@ -2,7 +2,7 @@ name: build-image-workflow
 on: [push]
 
 env:
-  REGISTRY: $${{ github.actor }}
+  REGISTRY: ${{ github.actor }}
   IMAGE_NAME: paneled-server
 
 jobs:
