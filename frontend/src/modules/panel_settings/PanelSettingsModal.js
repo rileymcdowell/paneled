@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { updateProposedPanel, applyProposedPanel } from '../../state/reducer';
@@ -14,10 +15,23 @@ function formatMacAddress(macStr) {
   return _.toUpper(`${octet_1}:${octet_2}:${octet_3}:${octet_4}:${octet_5}:${octet_6}`);
 }
 
-function ColorField({color, proposedPanel, dispatch}) {
-  const value = _.toInteger(proposedPanel[color]*100);
-  const idString = `${color}Pct`;
-  const label = `${_.capitalize(color)} (${value})`;
+
+function _callUpdateProposal(dispatch, proposedPanel, colorName, event) {
+  return dispatch(updateProposedPanel({...proposedPanel, [colorName]: event.target.value/100}));
+}
+
+// Best to debounce this, otherwise the range input can feel a bit
+// laggy because of the overhead of processing all the change events
+// and synchronizing them to the redux state.
+let DEBOUNCE_MS = 200;
+let callUpdateProposal = _.debounce(_callUpdateProposal, DEBOUNCE_MS);
+
+
+function ColorField({colorName, proposedPanel, dispatch}) {
+  const shadowValue = _.toInteger(proposedPanel[colorName]*100);
+  const idString = `${colorName}Pct`;
+  const [colorValue, setColorValue] = useState(shadowValue);
+  const label = `${_.capitalize(colorName)} (${colorValue})`;
   return (
     <div>
       <label htmlFor={idString} className="form-label">{label}</label>
@@ -26,15 +40,21 @@ function ColorField({color, proposedPanel, dispatch}) {
              max={100}
              id={idString}
              className="form-control" 
-             onChange={(e) => dispatch(updateProposedPanel({...proposedPanel, [color]: e.target.value/100}))}
-             value={value}/>
+             onChange={(e) => {
+              setColorValue(e.target.value);
+              callUpdateProposal(dispatch, proposedPanel, colorName, e);
+             }}
+             value={colorValue}/>
       <input type="number" 
             min={0} 
             max={100} 
             id={idString} 
             className="form-control" 
-            onChange={(e) => dispatch(updateProposedPanel({...proposedPanel, [color]: e.target.value/100}))}
-            value={value}/>
+            onChange={(e) => {
+              setColorValue(e.target.value);
+              callUpdateProposal(dispatch, proposedPanel, colorName, e);
+            }}
+            value={colorValue}/>
     </div>
   );
 }
@@ -54,7 +74,7 @@ function PanelSettingsBody({proposedPanel, dispatch}) {
             <label htmlFor="panelName" className="form-label">Panel Name</label>
             <input type="text" 
                     id="panelName" 
-                    className="form-control" 
+                    className="form-control"
                     value={proposedPanel['name']} 
                     onChange={(e) => dispatch(updateProposedPanel({...proposedPanel, name:e.target.value}))}/>
           </div> 
@@ -62,7 +82,7 @@ function PanelSettingsBody({proposedPanel, dispatch}) {
             <label htmlFor="panelGroup" className="form-label">Panel Group</label>
             <input type="text" 
                     id="panelGroup" 
-                    className="form-control" 
+                    className="form-control"
                     value={proposedPanel['group']} 
                     onChange={(e) => dispatch(updateProposedPanel({...proposedPanel, group:e.target.value}))}/>
           </div> 
@@ -71,7 +91,7 @@ function PanelSettingsBody({proposedPanel, dispatch}) {
               <label htmlFor="macAddress" className="form-label">Mac Address</label>
               <input type="text" 
                       id="macAddress" 
-                      className="form-control" 
+                      className="form-control smaller-font"
                       value={formatMacAddress(proposedPanel['macAddr'])} 
                       disabled={true} />
             </div> 
@@ -79,7 +99,7 @@ function PanelSettingsBody({proposedPanel, dispatch}) {
               <label htmlFor="softwareVersion" className="form-label">Software Version</label>
               <input type="text" 
                       id="softwareVersion" 
-                      className="form-control" 
+                      className="form-control smaller-font"
                       value={proposedPanel['version']} 
                       disabled={true} />
             </div>
@@ -87,17 +107,17 @@ function PanelSettingsBody({proposedPanel, dispatch}) {
               <label htmlFor="ipAddr" className="form-label">IP Address</label>
               <input type="text" 
                       id="ipAddr" 
-                      className="form-control" 
+                      className="form-control smaller-font"
                       value={proposedPanel['ipAddr']} 
                       disabled={true} />
             </div>
           </div>
           <div className='row'>
-            <ColorField color='red' proposedPanel={proposedPanel} dispatch={dispatch} />
-            <ColorField color='green'proposedPanel={proposedPanel} dispatch={dispatch} />
-            <ColorField color='blue' proposedPanel={proposedPanel} dispatch={dispatch} />
-            <ColorField color='white' proposedPanel={proposedPanel} dispatch={dispatch} />
-            <ColorField color='fan' proposedPanel={proposedPanel} dispatch={dispatch} />
+            <ColorField colorName='red' proposedPanel={proposedPanel} dispatch={dispatch} />
+            <ColorField colorName='green'proposedPanel={proposedPanel} dispatch={dispatch} />
+            <ColorField colorName='blue' proposedPanel={proposedPanel} dispatch={dispatch} />
+            <ColorField colorName='white' proposedPanel={proposedPanel} dispatch={dispatch} />
+            <ColorField colorName='fan' proposedPanel={proposedPanel} dispatch={dispatch} />
           </div>
         </form> 
       </div>
