@@ -37,10 +37,14 @@ function makeApiEndpoint(target) {
 
 }
 
+export function getShadowTree() {
+  return fetchGET(makeApiEndpoint("shadowtree"));
+}
+
 export function getStateTree() {
   return fetchGET(makeApiEndpoint("statetree"));
 }
 
 export function applyProposedPanelConfig(previousPanelConfig, proposedPanelConfig) {
-  fetchPOST(makeApiEndpoint("panel"), {previousPanelConfig, proposedPanelConfig});
+  return fetchPOST(makeApiEndpoint("panel"), {previousPanelConfig, proposedPanelConfig});
 }

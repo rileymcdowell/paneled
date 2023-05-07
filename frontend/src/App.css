@@ -57,3 +57,8 @@
 #group-list-accordion .accordion-item .list-group-item:not(:last-child) {
   margin-bottom: 1em;
 }
+
+/* Provide a way to shrink the font size in a control. Useful for the read-only mac-address field */
+.smaller-font {
+  font-size: smaller;
+}

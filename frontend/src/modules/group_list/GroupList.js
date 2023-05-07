@@ -58,12 +58,12 @@ function PanelGroup(groupConfig, groupName, dispatch) {
 }
 
 function PanelGroupList() {
-  const statetree = useSelector((state) => state.statetree);
+  const shadowtree = useSelector((state) => state.shadowtree);
   const dispatch = useDispatch();
 
   return (
     <div className='accordion' id="group-list-accordion">
-      {_.map(statetree, (config, name) => PanelGroup(config, name, dispatch))}
+      {_.map(shadowtree, (config, name) => PanelGroup(config, name, dispatch))}
     </div>
   );
 }

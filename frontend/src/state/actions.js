@@ -1,4 +1,5 @@
 export const stateTreeLoaded = "init/loadStateTree";
+export const shadowTreeLoaded = "init/loadShadowTree";
 export const doEditGroup = "group/edit";
 export const doEditPanel = "panel/edit";
 export const doUpdateProposedGroup = "group/updateProposal";

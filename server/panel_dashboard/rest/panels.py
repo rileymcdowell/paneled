@@ -1,10 +1,9 @@
 from collections import defaultdict
-from ipaddress import ip_address
 from panel_dashboard.flask_app import app
 import panel_dashboard.state.actions as state_actions
 from flask import jsonify, request
 from panel_dashboard.ops import group_average
-import panel_dashboard.panel_api as panel_api
+
 
 @app.route('/api/v1/statetree', methods=['GET'])
 def panel_statetree__get():
@@ -15,6 +14,17 @@ def panel_statetree__get():
         group = status['group']
         state_tree[group][panel] = status
     return jsonify(state_tree)
+
+
+@app.route('/api/v1/shadowtree', methods=['GET'])
+def panel_shadowtree__get():
+    panels = state_actions.get_panels()
+    shadow_tree = defaultdict(dict)
+    for panel in panels:
+        status = state_actions.get_shadow(panel)
+        group = status['group']
+        shadow_tree[group][panel] = status
+    return jsonify(shadow_tree)
 
 
 @app.route('/api/v1/group', methods=['GET'])
