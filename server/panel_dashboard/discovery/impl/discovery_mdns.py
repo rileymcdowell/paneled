@@ -31,6 +31,7 @@ def discover_panels():
     browser = ServiceBrowser(zeroconf, "_http._tcp.local.", listener)
     _logger.debug(f"Started mDNS service browser: {browser.name} with thread identity: {browser.ident}")
     time.sleep(_MDNS_WAIT_TIME_S)
+    browser.cancel()
     zeroconf.close()
 
     matches = [x for x in listener.found if _PANEL_NAME_SUBSTRING in x.name]
