@@ -288,5 +288,24 @@ the electronics box cover for the last time.
 
 ## The LED Strips
 
-TODO
+Attaching the LED strips is fairly straightforward. Begin by cutting a segment
+of strip appropriately sized to align with the output wires from the electronics
+box. Leave some room at the left end to place a second short segment.
 
+<img src="images/first_led_strip_segment.jpg" alt="first led strip segment" width=500/>
+
+Go around the back edges of the box applying the LED strip segments 
+after cutting to length. Double check each segment for length 
+before cutting, and double check each segment for orientation 
+before adhering - note the alignment of the 12v contact of 
+both strips towards the inside of the panel area in the following 
+photo.
+
+<img src="images/led_strip_corner_orientation.jpg" alt="led strip corner orientation" width=500/>
+
+When you get back to the corner where you started, apply a smaller strip
+to complete the loop and create consistent illumination all around the panel.
+
+<img src="images/led_strip_final_corner_placement.jpg" alt="led strip final corner placement" width=500/>
+
+TODO: Soldering
