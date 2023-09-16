@@ -119,9 +119,51 @@ a perfect fit. A visual estimate of center is sufficient.
 ---
 ## Fitting the RockWool
 
-TODO
+Begin by laying the panel face up, with the electronics access door facing the floor.
 
----
+
+<img src="images/frame_facing_floor.jpg" alt="frame facing floor" width="500"/>
+
+Place a batt of rockwool on top of the frame, leaving room to see the electronics box. Make a mark to indicate the right and left sides of the
+electronics box (only one of the two marks is indicated below). 
+Because rockwool is soft and pliable, accuracy is not critical. 
+Careful visual alignment is all that is required to position the lines.
+
+<img src="images/mark_on_frame.jpg" alt="mark on frame" width="500"/>
+
+Using a sharp utility knife and the two marks, score the rockwool batt
+in the rough shape of the electronics box. Again, accuracy is not critical.
+
+Once scored, use the utility knife to cut a 2-3 cm thick square of 
+rockwool out of the scored area. This square will be used to fill 
+the area behind the electronics box cutout.
+
+<img src="images/cut_a_rockwool_square.jpg" alt="cut a rockwool square" width="500"/>
+
+You should be left with a nice square of rockwool and a rough
+surface cutout approximately the size of the electronics box.
+
+<img src="images/rockwool_square_cut.jpg" alt="rockwool square cut" width="500"/>
+
+Next use a sharp serrated knife or thin saw blade to cut out the rough square
+and create a cutout void for the electronics box.
+
+<img src="images/hacksaw_rockwool_square.jpg" alt="hacksaw rockwool square" width="500"/>
+
+You should be left with a nice void and a thin square of rockwool to place
+over the electronic box.
+
+<img src="images/rockwool_cutout_complete.jpg" alt="rockwool cutout complete" width="500"/>
+
+Gently push the rockwool into the frame, then place the square cutout into
+the area just over the electronics box. The result should be a nearly 
+perfect surface of rockwool. Don't hesitate to peel away or add rockwool 
+to achive a consistently flat layer in the area of the electronics box.
+
+<img src="images/score_the_rockwool_square.jpg" alt="score the rockwool square" width="500"/>
+
+That's it for fitting the rockwool.
+
 ## The Front and Back Fabric
 
 Begin by laying the fabric for the front of your panels face 
@@ -166,7 +208,6 @@ anywhere near "tight" and was very satisfied with the results.
 <img src="images/fabric_sides_stapled.jpg" alt="Fabric sides stapled" width=500/>
 
 
----
 ## Wrapping the Corners 
 
 By far the most challenging part of wrapping the panels is getting the corners
@@ -210,8 +251,6 @@ can exit directly from the back of the electronics enclosure.
 
 <img src="images/cut_hole_for_led_cable_two.jpg" alt="led cable hole two" width=500/>
 
----
-
 ## The Power Switch
 
 Next, you'll need to install the power switch into the hole you routed out.
@@ -246,7 +285,6 @@ the electronics box cover for the last time.
 
 <img src="images/electronics_box_closed.jpg" alt="electronics box closed" width=500/>
 
----
 
 ## The LED Strips
 
