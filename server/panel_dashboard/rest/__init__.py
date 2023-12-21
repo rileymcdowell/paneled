@@ -1,1 +1,2 @@
 import panel_dashboard.rest.panels
+import panel_dashboard.rest.groups

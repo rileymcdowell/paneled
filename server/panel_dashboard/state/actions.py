@@ -1,4 +1,5 @@
 import os
+import typing
 import logging
 import json
 import redis as _redislib
@@ -103,7 +104,7 @@ def get_status(ip_address):
     else:
         return json.loads(res.decode())
 
-def get_shadow(ip_address):
+def get_shadow(ip_address) -> dict[str, typing.Any]:
     redis = _get_redis()
     res = redis.get(_get_shadow_key(ip_address))
     if res is None:

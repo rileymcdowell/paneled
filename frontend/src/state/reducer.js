@@ -1,6 +1,8 @@
 import { stateTreeLoaded, shadowTreeLoaded, doEditGroup, doEditPanel
-       , doUpdateProposedGroup, doUpdateProposedPanel, doApplyProposedPanel } from "./actions";
-import { getShadowTree, getStateTree, applyProposedPanelConfig } from '../api.js';
+       , doUpdateProposedGroup, doUpdateProposedPanel
+       , doApplyProposedGroup, doApplyProposedPanel } from "./actions";
+import { getShadowTree, getStateTree
+       , applyProposedPanelConfig, applyProposedGroupConfig } from '../api.js';
 
 export async function loadShadowTree(dispatch, getState) {
   const response = await getShadowTree();
@@ -38,6 +40,13 @@ export async function applyProposedPanel(dispatch, getState) {
   dispatch({ type: doApplyProposedPanel });
 }
 
+export async function applyProposedGroup(dispatch, getState) {
+  const state = getState();
+  applyProposedGroupConfig(state['editedGroup'], state['proposedGroup'])
+      .then(loadShadowTree(dispatch, getState));
+  dispatch({ type: doApplyProposedGroup });
+}
+
 const defaultState = { "statetree": {}
                      , "shadowtree": {}
                      , "editedGroup": undefined
@@ -55,16 +64,26 @@ export default function appReducer(state=defaultState, action) {
       return { ...state, shadowtree: action.payload };
     }
     case doEditGroup: { 
-      return { ...state, editedGroup: action.payload, proposedGroup: {...action.payload} };
+      return { ...state, editedGroup: {...action.payload}, proposedGroup: {...action.payload} };
     }
     case doEditPanel: { 
-      return { ...state, editedPanel: action.payload, proposedPanel: {...action.payload} };
+      return { ...state, editedPanel: {...action.payload}, proposedPanel: {...action.payload} };
     }
     case doUpdateProposedGroup: {
       return { ...state, proposedGroup: action.payload };
     }
     case doUpdateProposedPanel: {
       return { ...state, proposedPanel: action.payload };
+    }
+    case doApplyProposedPanel: {
+      // When you apply proposed settings, the panel's state
+      // becomes what was proposed.
+      return { ...state, editedPanel: {...state.proposedPanel}}
+    }
+    case doApplyProposedGroup: {
+      // When you apply proposed settings, the group's state
+      // becomes what was proposed.
+      return { ...state, editedGroup: {...state.proposedGroup} }
     }
     default: {
       return state;
