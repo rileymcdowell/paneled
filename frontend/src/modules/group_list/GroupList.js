@@ -2,6 +2,7 @@ import { editGroup, editPanel} from '../../state/reducer';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
+import { getGroupSummary } from '../../utils/groupStats';
 
 function Panel(panelConfig, panelIP, dispatch) {
   const panelName = panelConfig['name'];
@@ -39,7 +40,7 @@ function PanelGroup(groupConfig, groupName, dispatch) {
           <div className="btn btn-secondary group-settings-btn" 
                data-bs-toggle="modal"
                data-bs-target="#group-settings-modal"
-               onClick={() => dispatch(editGroup(groupConfig))}
+               onClick={() => dispatch(editGroup(getGroupSummary(groupConfig)))}
                >
             <i className="bi bi-gear"/>
           </div>

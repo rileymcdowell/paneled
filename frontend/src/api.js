@@ -34,7 +34,6 @@ function fetchPOST(uri, data) {
 
 function makeApiEndpoint(target) {
   return `${getBackendUrl()}/api/v1/${target}`;
-
 }
 
 export function getShadowTree() {
@@ -47,4 +46,8 @@ export function getStateTree() {
 
 export function applyProposedPanelConfig(previousPanelConfig, proposedPanelConfig) {
   return fetchPOST(makeApiEndpoint("panel"), {previousPanelConfig, proposedPanelConfig});
+}
+
+export function applyProposedGroupConfig(previousGroupConfig, proposedGroupConfig) {
+  return fetchPOST(makeApiEndpoint("group"), {previousGroupConfig, proposedGroupConfig});
 }
