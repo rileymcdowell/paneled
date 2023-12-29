@@ -14,7 +14,7 @@ function Panel(panelConfig, panelIP, dispatch) {
             <div> Panel Name: <b> {panelName} </b></div>
             <div> IP: <b> {panelIP} </b></div>
           </div>
-          <button className='btn btn-secondary panel-settings-btn' 
+          <button className='btn btn-secondary panel-settings-btn'
                   type="button"
                   onClick={() => dispatch(editPanel(panelConfig))}
                   data-bs-toggle="modal"
@@ -24,7 +24,7 @@ function Panel(panelConfig, panelIP, dispatch) {
           </button>
         </div>
       </div>
-    </div> 
+    </div>
   );
 }
 
@@ -37,7 +37,7 @@ function PanelGroup(groupConfig, groupName, dispatch) {
           <div>
             {`Panel Group: ${groupName}`}
           </div>
-          <div className="btn btn-secondary group-settings-btn" 
+          <div className="btn btn-secondary group-settings-btn"
                data-bs-toggle="modal"
                data-bs-target="#group-settings-modal"
                onClick={() => dispatch(editGroup(getGroupSummary(groupConfig)))}

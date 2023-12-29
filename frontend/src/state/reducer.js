@@ -1,19 +1,12 @@
-import { stateTreeLoaded, shadowTreeLoaded, doEditGroup, doEditPanel
+import { shadowTreeLoaded, doEditGroup, doEditPanel
        , doUpdateProposedGroup, doUpdateProposedPanel
        , doApplyProposedGroup, doApplyProposedPanel } from "./actions";
-import { getShadowTree, getStateTree
-       , applyProposedPanelConfig, applyProposedGroupConfig } from '../api.js';
+import { getShadowTree, applyProposedPanelConfig, applyProposedGroupConfig } from '../api.js';
 
 export async function loadShadowTree(dispatch, getState) {
   const response = await getShadowTree();
-  // Load the state tree.
+  // Load the shadow tree.
   dispatch({ type: shadowTreeLoaded, payload: response });
-}
-
-export async function loadStateTree(dispatch, getState) {
-  const response = await getStateTree();
-  // Load the state tree.
-  dispatch({ type: stateTreeLoaded, payload: response });
 }
 
 export function editGroup(newGroup) {
@@ -36,19 +29,20 @@ export async function applyProposedPanel(dispatch, getState) {
   const state = getState();
   // Update the panel, then grab the updated state to refresh the UI.
   applyProposedPanelConfig(state['editedPanel'], state['proposedPanel'])
-      .then(loadShadowTree(dispatch, getState));
-  dispatch({ type: doApplyProposedPanel });
+      .then(() => loadShadowTree(dispatch, getState))
+      .then(() => dispatch({ type: doApplyProposedPanel }));
 }
 
 export async function applyProposedGroup(dispatch, getState) {
   const state = getState();
+  // Apply the new group configuration, then grab the updated state
+  // to refresh subsequent UI windows.
   applyProposedGroupConfig(state['editedGroup'], state['proposedGroup'])
-      .then(loadShadowTree(dispatch, getState));
-  dispatch({ type: doApplyProposedGroup });
+      .then(() => loadShadowTree(dispatch, getState))
+      .then(() => dispatch({ type: doApplyProposedGroup }));
 }
 
-const defaultState = { "statetree": {}
-                     , "shadowtree": {}
+const defaultState = { "shadowtree": {}
                      , "editedGroup": undefined
                      , "proposedGroup": undefined
                      , "editedPanel": undefined
@@ -57,16 +51,17 @@ const defaultState = { "statetree": {}
 
 export default function appReducer(state=defaultState, action) {
   switch (action.type) {
-    case stateTreeLoaded: {
-      return { ...state, statetree: action.payload };
-    }
     case shadowTreeLoaded: {
       return { ...state, shadowtree: action.payload };
     }
-    case doEditGroup: { 
+    case doEditGroup: {
+      // At the moment when the user opens the edit modal on a group,
+      // the edited group and the proposed group should be identical.
       return { ...state, editedGroup: {...action.payload}, proposedGroup: {...action.payload} };
     }
-    case doEditPanel: { 
+    case doEditPanel: {
+      // At the moment when the user opens the edit modal on a panel,
+      // the edited panel and the proposed panel should be identical.
       return { ...state, editedPanel: {...action.payload}, proposedPanel: {...action.payload} };
     }
     case doUpdateProposedGroup: {
