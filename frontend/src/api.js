@@ -9,7 +9,7 @@ if (isDevlopmentMode()) {
 }
 
 const _LOCAL_BACKEND = "http://localhost:5000";
-const _PRODUCTION_BACKEND = window.location.origin; 
+const _PRODUCTION_BACKEND = window.location.origin;
 
 function getBackendUrl() {
   if (isDevlopmentMode() ) {
@@ -28,7 +28,7 @@ function fetchPOST(uri, data) {
                     , mode: 'cors'
                     , cache: 'no-cache'
                     , headers: { 'Content-Type': 'application/json'}
-                    , body: JSON.stringify(data) 
+                    , body: JSON.stringify(data)
                     });
 }
 
@@ -38,10 +38,6 @@ function makeApiEndpoint(target) {
 
 export function getShadowTree() {
   return fetchGET(makeApiEndpoint("shadowtree"));
-}
-
-export function getStateTree() {
-  return fetchGET(makeApiEndpoint("statetree"));
 }
 
 export function applyProposedPanelConfig(previousPanelConfig, proposedPanelConfig) {

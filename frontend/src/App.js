@@ -2,7 +2,7 @@ import './App.css';
 import Navbar from './modules/navbar/Navbar';
 
 import { useDispatch } from 'react-redux';
-import { loadShadowTree, loadStateTree } from './state/reducer';
+import { loadShadowTree } from './state/reducer';
 import PanelGroupList from './modules/group_list/GroupList';
 import PanelSettingsModal from './modules/panel_settings/PanelSettingsModal';
 import GroupSettingsModal from './modules/panel_settings/GroupSettingsModal';
@@ -10,8 +10,6 @@ import GroupSettingsModal from './modules/panel_settings/GroupSettingsModal';
 function App() {
   const dispatch = useDispatch();
   loadShadowTree(dispatch);
-  loadStateTree(dispatch);
-
 
   return (
     <div className="App">

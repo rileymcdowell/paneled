@@ -5,7 +5,7 @@ from flask import jsonify, request
 
 
 @app.route('/api/v1/statetree', methods=['GET'])
-def panel_statetree__get():
+async def panel_statetree__get():
     panels = state_actions.get_panels()
     state_tree = defaultdict(dict)
     for panel in panels:
@@ -16,7 +16,7 @@ def panel_statetree__get():
 
 
 @app.route('/api/v1/shadowtree', methods=['GET'])
-def panel_shadowtree__get():
+async def panel_shadowtree__get():
     panels = state_actions.get_panels()
     shadow_tree = defaultdict(dict)
     for panel in panels:
@@ -27,13 +27,13 @@ def panel_shadowtree__get():
 
 
 @app.route('/api/v1/panel', methods=['POST'])
-def panel__post():
+async def panel__post():
     new_config = request.get_json()
     # Not sure this is actually needed, since the IP uniquely identifies the panel.
     new_panel_config = new_config['proposedPanelConfig']
     ip_addr = new_panel_config['ipAddr']
 
     # Update our state
-    state_actions.set_shadow(ip_addr, new_panel_config)
-    
+    await state_actions.set_shadow(ip_addr, new_panel_config)
+
     return jsonify(new_panel_config)

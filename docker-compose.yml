@@ -5,7 +5,7 @@ services:
       - "./.data/redis:/data"
 
   server:
-    build: 
+    build:
       context: .
     image: ${SERVER_IMG_NAME}:latest
     volumes:
@@ -14,21 +14,20 @@ services:
       PYTHONDONTWRITEBYTECODE: "1"
       FLASK_DEBUG: "1"
       DISCOVERY_MODE: "ip_list"
-      PANEL_IPS: "192.168.1.194,192.168.1.180,192.168.1.148,192.168.1.118,192.168.1.115,192.168.1.103,192.168.1.148,192.168.1.192"
+      PANEL_IPS: "192.168.1.194,192.168.1.180,192.168.1.148,192.168.1.118,192.168.1.115,192.168.1.103,192.168.1.192,192.168.1.116,192.168.1.144,192.168.1.147"
       REDIS_HOST_PORT: "redis:6379"
     ports:
       - "5000:5000"
 
   worker:
-    build: 
+    build:
       context: .
     volumes:
       - "./server/panel_dashboard:/app/panel_dashboard"
     environment:
       PYTHONDONTWRITEBYTECODE: "1"
       DISCOVERY_MODE: "ip_list"
-      PANEL_IPS: "192.168.1.194,192.168.1.180,192.168.1.148,192.168.1.118,192.168.1.115,192.168.1.103,192.168.1.148,192.168.1.192"
+      PANEL_IPS: "192.168.1.194,192.168.1.180,192.168.1.148,192.168.1.118,192.168.1.115,192.168.1.103,192.168.1.192,192.168.1.116,192.168.1.144,192.168.1.147"
       REDIS_HOST_PORT: "redis:6379"
     command: ["start_worker.sh"]
-      
-    
+

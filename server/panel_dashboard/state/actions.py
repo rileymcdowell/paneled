@@ -1,4 +1,3 @@
-import os
 import typing
 import logging
 import json
@@ -41,7 +40,7 @@ _SECOND = 1
 _MINUTE = _SECOND * 60
 _HOUR = _MINUTE * 60
 _DAY = _HOUR * 24
-_WEEK = _DAY * 7 
+_WEEK = _DAY * 7
 
 _EXPIRE_STATUS_SECONDS = _MINUTE * 5
 _EXPIRE_SHADOW_SECONDS = _WEEK
@@ -60,7 +59,7 @@ def get_panels():
     redis = _get_redis()
 
     # We can easily get the last known list of
-    # panels, but there might be some that have expired.    
+    # panels, but there might be some that have expired.
     panels = redis.smembers(b"panels")
 
     # We should clean them up before returning the result.
@@ -75,10 +74,10 @@ def get_panels():
 
     return [x.decode() for x in panels]
 
-def confirm_panel(ip_address, status):
-    """ 
+async def confirm_panel(ip_address, status):
+    """
     This is what we do when we find a new panel or confirm a known panel
-    exists. We should synchronize status and shadow here. 
+    exists. We should synchronize status and shadow here.
     """
     redis = _get_redis()
     redis.sadd(b"panels", ip_address)
@@ -87,10 +86,10 @@ def confirm_panel(ip_address, status):
     _logger.debug(f"Confirmed: {shadow}", flush=True)
     if shadow is not None:
         # If a shadow does exist, sync with it.
-        ops.synchronize_state.sync_panel(current=status, desired=shadow)
-    else:    
+        await ops.synchronize_state.sync_panel(current=status, desired=shadow)
+    else:
         # If it doesn't exist, make one based on the current state.
-        set_shadow(ip_address, status)
+        await set_shadow(ip_address, status)
 
     # Reconfirm the shadow/status key expiration timeline.
     # It's okay to expire keys that do not exist, it's a no-op.
@@ -118,13 +117,13 @@ def set_status(ip_address, state):
     redis.set(key, json.dumps(state))
     redis.expire(key, _EXPIRE_STATUS_SECONDS)
 
-def set_shadow(ip_address, state):
+async def set_shadow(ip_address, state):
     redis = _get_redis()
     key = _get_shadow_key(ip_address)
     redis.set(key, json.dumps(state))
     redis.expire(key, _EXPIRE_SHADOW_SECONDS)
     try:
-        ops.synchronize_state.sync_panel(current=get_status(ip_address), desired=state)
+        await ops.synchronize_state.sync_panel(current=get_status(ip_address), desired=state)
     except Exception:
         import traceback
         traceback.print_exc()
